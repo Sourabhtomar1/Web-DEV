@@ -32,21 +32,22 @@ function parseData(html) {
     let teamName = ch(bothInnings[i]).find("h5").text();
     teamName = teamName.split("INNINGS")[0].trim();
 
-
-    let allTrs = ch(bothInnings[i]).find(".table.batsman tbody tr");
-    //<tr> ..</tr>
-    console.log(teamName);
-    for(let j=0;j<allTrs.length-1;j++){
-      let alltds = ch(allTrs[j]).find("td");
-      if(alltds.length>1){
-        let batsmanName = ch(alltds[0]).find("a").text().trim();
-        let runs = ch(alltds[2]).text().trim();
-        let balls = ch(alltds[3]).text().trim();
-        let fours = ch(alltds[5]).text().trim();
-        let sixes = ch(alltds[6]).text().trim();
-        let strikerate = ch(alltds[7]).text().trim();
-        console.log(`Batsman = ${batsmanName} runs =${runs} balls = ${balls} fours =${fours} sixes=${sixes} strikerate=${strikerate}`);
-        processDetails(teamName,batsmanName,runs,balls,fours,sixes,strikerate);
+    if(!teamName.includes("Team")){
+      let allTrs = ch(bothInnings[i]).find(".table.batsman tbody tr");
+      //<tr> ..</tr>
+      console.log(teamName);
+      for(let j=0;j<allTrs.length-1;j++){
+        let alltds = ch(allTrs[j]).find("td");
+        if(alltds.length>1){
+          let batsmanName = ch(alltds[0]).find("a").text().trim();
+          let runs = ch(alltds[2]).text().trim();
+          let balls = ch(alltds[3]).text().trim();
+          let fours = ch(alltds[5]).text().trim();
+          let sixes = ch(alltds[6]).text().trim();
+          let strikerate = ch(alltds[7]).text().trim();
+          console.log(`Batsman = ${batsmanName} runs =${runs} balls = ${balls} fours =${fours} sixes=${sixes} strikerate=${strikerate}`);
+          processDetails(teamName,batsmanName,runs,balls,fours,sixes,strikerate);
+        }
       }
     }
 
