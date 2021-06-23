@@ -45,7 +45,7 @@ function parseData(html) {
           let fours = ch(alltds[5]).text().trim();
           let sixes = ch(alltds[6]).text().trim();
           let strikerate = ch(alltds[7]).text().trim();
-          console.log(`Batsman = ${batsmanName} runs =${runs} balls = ${balls} fours =${fours} sixes=${sixes} strikerate=${strikerate}`);
+          //console.log(`Batsman = ${batsmanName} runs =${runs} balls = ${balls} fours =${fours} sixes=${sixes} strikerate=${strikerate}`);
           processDetails(teamName,batsmanName,runs,balls,fours,sixes,strikerate);
         }
       }
